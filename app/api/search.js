@@ -1,10 +1,10 @@
 
 var Google = require('./googlecs');
-var latestController = require('./info');
+var info = require('./info');
 var commom = require('./commom');
 
 function googleSearch(term, page, res) {
-  latestController.updateCount(term, function(err) {
+  info.updateCount(term, function(err) {
     if (err) {
       return res.send(commom.createErrObject(err));
     }
