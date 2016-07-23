@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Fcc-imagesearch by lbpinheiro</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/lbpinheiro/fcc-imagesearch">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/lbpinheiro/fcc-imagesearch/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/lbpinheiro/fcc-imagesearch/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Fcc-imagesearch</h1>
+          <p>mage Search Abstraction Layer, a @FreeCodeCamp exercise required for &#39;Back End Developer Certification&quot;</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/lbpinheiro">lbpinheiro</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="fcc-image-search" class="anchor" href="#fcc-image-search" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>FCC Image Search</h1>
+
+<p>Image Search Abstraction Layer <a href="https://github.com/FreeCodeCamp" class="user-mention">@FreeCodeCamp</a>, required for Back End Developer Certification.</p>
+
+<p>This is a A <a href="https://www.freecodecamp.com/challenges/image-search-abstraction-layer">FreeCodeCamp</a> exercice.</p>
+
+<h2>
+<a id="api-documentation" class="anchor" href="#api-documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>API Documentation</h2>
+
+<h3>
+<a id="endpoint" class="anchor" href="#endpoint" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Endpoint</h3>
+
+<p><code>http://zapimages.herokuapp.com/</code></p>
+
+<h3>
+<a id="routes" class="anchor" href="#routes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Routes</h3>
+
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/search/:term</td>
+<td>GET</td>
+<td>Searches for :term images</td>
+</tr>
+<tr>
+<td>/search/:term/:page</td>
+<td>GET</td>
+<td>Searches for :term images with pagination through response</td>
+</tr>
+<tr>
+<td>/latest</td>
+<td>GET</td>
+<td>Returns latest 10 searches</td>
+</tr>
+<tr>
+<td>/top</td>
+<td>GET</td>
+<td>Returns top 10 searches</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="responses" class="anchor" href="#responses" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Responses</h3>
+
+<p>All routes returns an array of objects (limited by 10)</p>
+
+<ul>
+<li>
+<code>/search/:term</code> and <code>/search/:term/:page</code>
+</li>
+</ul>
+
+<div class="highlight highlight-source-js"><pre>[
+  {
+    imageLink<span class="pl-k">:</span>  [<span class="pl-c1">String</span>], <span class="pl-c">//image link</span>
+    pageLink<span class="pl-k">:</span>   [<span class="pl-c1">String</span>], <span class="pl-c">//page link</span>
+    snippet<span class="pl-k">:</span>    [<span class="pl-c1">String</span>]  <span class="pl-c">//image's descriptive text</span>
+  }
+]</pre></div>
+
+<ul>
+<li>
+<code>/latest</code> and <code>/top</code>
+</li>
+</ul>
+
+<div class="highlight highlight-source-js"><pre>[
+  {
+    term<span class="pl-k">:</span>       [<span class="pl-c1">String</span>], <span class="pl-c">//searched term</span>
+    count<span class="pl-k">:</span>      [<span class="pl-c1">Number</span>], <span class="pl-c">//number of times this term was searched</span>
+    createdAt<span class="pl-k">:</span>  [<span class="pl-c1">String</span>], <span class="pl-c">//first time &lt;Timestamp&gt; this term was searched</span>
+    updatedAt<span class="pl-k">:</span>  [<span class="pl-c1">String</span>]  <span class="pl-c">//last time &lt;Timestamp&gt; this term was searched</span>
+  }
+]</pre></div>
+
+<ul>
+<li>If something went wrong</li>
+</ul>
+
+<div class="highlight highlight-source-js"><pre>{
+  error<span class="pl-k">:</span>        [<span class="pl-c1">String</span>]  <span class="pl-c">//error description</span>
+}</pre></div>
+
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h2>
+
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Description</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>http://zapimages.herokuapp.com/search/mongodb</code></td>
+<td>Searches for 'mongodb'</td>
+<td><a href="http://zapimages.herokuapp.com/search/mongodb">See result</a></td>
+</tr>
+<tr>
+<td><code>http://zapimages.herokuapp.com/search/mongodb/3</code></td>
+<td>Paginate throught 'mongodb' results</td>
+<td><a href="http://zapimages.herokuapp.com/search/mongodb/3">See result</a></td>
+</tr>
+<tr>
+<td><code>http://zapimages.herokuapp.com/search/roger%20federer/ff</code></td>
+<td>Try to search for 'roger federer' but with an invalid page number. An error is shown</td>
+<td><a href="http://zapimages.herokuapp.com/search/roger%20federer/ff">See result</a></td>
+</tr>
+<tr>
+<td><code>http://zapimages.herokuapp.com/latest</code></td>
+<td>Shows the most 10 recent searches</td>
+<td><a href="http://zapimages.herokuapp.com/latest">See result</a></td>
+</tr>
+<tr>
+<td><code>http://zapimages.herokuapp.com/top</code></td>
+<td>Shows the 10 most popular searches</td>
+<td><a href="http://zapimages.herokuapp.com/top">See result</a></td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TODO</h2>
+
+<ul>
+<li>An API test page, similar with what I did with <a href="https://fcc-requestheader.herokuapp.com/test">Request Header App</a>
+</li>
+<li>Separate <a href="app/api/googlecs.js">GoogleCS</a> into a different package</li>
+<li>Tweak <a href="app/api/googlecs.js">GoogleCS</a>
+</li>
+</ul>
+
+<h2>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Author</h2>
+
+<p><strong>Lucas Batochi Pinheiro</strong></p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright (c) 2016,
+Lucas B. Pinheiro <a href="mailto:pinheiro.lucas@gmail.com">pinheiro.lucas@gmail.com</a></p>
+
+<p>Permission to use, copy, modify, and distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
