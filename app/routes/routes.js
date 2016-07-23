@@ -2,7 +2,7 @@
 
 var path = process.cwd();
 var searchControllers = require('../api/search');
-var latestController = require('../api/info');
+var info = require('../api/info');
 var Google = require('../api/googlecs');
 
 module.exports = function(app) {
@@ -11,9 +11,9 @@ module.exports = function(app) {
 
   app.get('/search/:term', searchControllers.searchPage1);
 
-  app.get('/top', latestController.getTopSearches);
+  app.get('/top', info.getTopSearches);
 
-  app.get('/latest', latestController.getLatestSearches);
+  app.get('/latest', info.getLatestSearches);
 
   //TODO API test page
   /*app.get('/apitest', function(req, res) {

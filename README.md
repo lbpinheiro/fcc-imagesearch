@@ -65,8 +65,8 @@ Address               | Description | Result
 ## TODO
 
 * An API test page, similar with what I did with [Request Header App](https://fcc-requestheader.herokuapp.com/test)
-* Separate [GoogleCS](app/api/googlecs.js) into a different package
-* Tweak [GoogleCS](app/api/googlecs.js)
+* Separate [GoogleCS](https://github.com/lbpinheiro/fcc-imagesearch/blob/master/app/api/googlecs.js) into a different package
+* Tweak [GoogleCS](https://github.com/lbpinheiro/fcc-imagesearch/blob/master/app/api/googlecs.js)
 
 ## Author
 
