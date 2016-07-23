@@ -45,14 +45,28 @@ All routes returns an array of objects (limited by 10)
 ]
 ```
 
+* If something went wrong
+```javascript
+{
+  error:        [String]  //error description
+}
+```
+
 ## Examples
+
+Address               | Description | Result
+----------------------|--------|------------
+`http://zapimages.herokuapp.com/search/mongodb` | Searches for 'mongodb' | [See result](http://zapimages.herokuapp.com/search/mongodb)
+`http://zapimages.herokuapp.com/search/mongodb/3` | Paginate throught 'mongodb' results | [See result](http://zapimages.herokuapp.com/search/mongodb/3)
+`http://zapimages.herokuapp.com/search/roger%20federer/ff` | Try to search for 'roger federer' but with an invalid page number. An error is shown | [See result](http://zapimages.herokuapp.com/search/roger%20federer/ff)
+`http://zapimages.herokuapp.com/latest` | Shows the most 10 recent searches | [See result](http://zapimages.herokuapp.com/latest)
+`http://zapimages.herokuapp.com/top` | Shows the 10 most popular searches | [See result](http://zapimages.herokuapp.com/top)
 
 ## TODO
 
 * An API test page, similar with what I did with [Request Header App](https://fcc-requestheader.herokuapp.com/test)
-* Separate [GoogleCS](api/googlecs.js) into a different package
-* Tweak [GoogleCS](api/googlecs.js) (perhaps with use of `promise`)
-
+* Separate [GoogleCS](app/api/googlecs.js) into a different package
+* Tweak [GoogleCS](app/api/googlecs.js)
 
 ## Author
 
